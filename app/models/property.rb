@@ -4,6 +4,8 @@ class Property < ApplicationRecord
   validates :title, presence: true
   validates :price, presence: true
   validates :description, presence: true
-
+  validates :superficie , presence: true
+  validates :num_rooms, presence: true
+  validates :furnished, presence: true
 
 end
