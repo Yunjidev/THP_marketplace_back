@@ -27,6 +27,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_08_31_095208) do
     t.integer "price"
     t.text "description"
     t.string "image"
+    t.integer "superficie"
+    t.integer "num_rooms"
+    t.boolean "furnished"
+    t.string "category"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
