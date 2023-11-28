@@ -18,27 +18,22 @@ class PropertiesController < ApplicationController
   # POST /properties
  # app/controllers/properties_controller.rb
 
-def create
-  # Check if an image file was provided in the request
+ def create
   if params[:image].present?
-    # Upload the image to Cloudinary
     image = Cloudinary::Uploader.upload(params[:image])
-
-    # Create a new Property instance with the image URL
     @property = Property.new(image: image['url'])
   else
-    # Handle the case where no image was provided
     @property = Property.new
   end
 
-  # Assuming you have authentication set up to get the current user, uncomment this line
-  # puts "Current user: #{current_user.inspect}"
-
-  # Set other property attributes based on your form data
   @property.title = params[:property][:title]
   @property.price = params[:property][:price]
   @property.description = params[:property][:description]
+  @property.superficie = params[:property][:superficie]
   @property.user_id = params[:property][:user_id]
+  @property.furnished = params[:property][:furnished]
+  @property.category = params[:property][:category]
+  @property.num_rooms = params[:property][:num_rooms]
 
   if @property.save
     render json: @property, status: :created, location: @property
@@ -46,6 +41,7 @@ def create
     render json: @property.errors, status: :unprocessable_entity
   end
 end
+
 
 
 
