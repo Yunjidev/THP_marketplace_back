@@ -7,8 +7,6 @@ class Property < ApplicationRecord
   validates :num_rooms, presence: true
   validates :furnished, inclusion: { in: [true, false] }
   attribute :superficie, :integer
-  attr_accessor :furnished
-
 
   def num_rooms
     self[:num_rooms] || 0
@@ -17,5 +15,5 @@ class Property < ApplicationRecord
   def category=(value)
     self[:category] = value
   end
-  
 end
+
