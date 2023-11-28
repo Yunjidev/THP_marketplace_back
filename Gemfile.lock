@@ -87,6 +87,8 @@ GEM
       rest-client (>= 2.0.0)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    countries (5.7.0)
+      unaccent (~> 0.3)
     crass (1.0.6)
     date (3.3.4)
     debug (1.8.0)
@@ -222,6 +224,7 @@ GEM
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unaccent (0.4.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     warden-jwt_auth (0.8.0)
@@ -241,6 +244,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   cloudinary
+  countries
   debug
   devise (~> 4.9)
   devise-jwt (~> 0.11.0)

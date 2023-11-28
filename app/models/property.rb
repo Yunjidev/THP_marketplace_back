@@ -1,5 +1,8 @@
 class Property < ApplicationRecord
   belongs_to :user
+  belongs_to :city
+  belongs_to :country
+  
   validates :title, presence: true
   validates :price, presence: true
   validates :description, presence: true
