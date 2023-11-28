@@ -34,9 +34,15 @@ class PropertiesController < ApplicationController
   @property.furnished = params[:property][:furnished]
   @property.category = params[:property][:category]
   @property.num_rooms = params[:property][:num_rooms]
-  @property.city_id = params[:property][:city_id]
-  @property.country_id = params[:property][:country_id]
 
+  # Trouver ou créer la ville
+  city = City.find_or_create_by(name: params[:property][:city])
+
+  # Trouver ou créer le pays
+  country = Country.find_or_create_by(name: params[:property][:country])
+
+  @property.city = city
+  @property.country = country
 
   if @property.save
     render json: @property, status: :created, location: @property
@@ -44,6 +50,7 @@ class PropertiesController < ApplicationController
     render json: @property.errors, status: :unprocessable_entity
   end
 end
+
 
 
 
