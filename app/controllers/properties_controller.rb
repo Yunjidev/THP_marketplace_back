@@ -34,6 +34,9 @@ class PropertiesController < ApplicationController
   @property.furnished = params[:property][:furnished]
   @property.category = params[:property][:category]
   @property.num_rooms = params[:property][:num_rooms]
+  @property.city_id = params[:property][:city_id]
+  @property.country_id = params[:property][:country_id]
+
 
   if @property.save
     render json: @property, status: :created, location: @property

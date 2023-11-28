@@ -10,6 +10,8 @@ class CreateProperties < ActiveRecord::Migration[7.0]
       t.boolean :furnished  # Ajout du champ meublé / non meublé en boolean
       t.string :category
       t.belongs_to :user, index: true
+      t.belongs_to :city, foreign_key: true
+      t.belongs_to :country, foreign_key: true
 
       t.timestamps
     end
