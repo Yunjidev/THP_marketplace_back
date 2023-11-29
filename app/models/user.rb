@@ -7,6 +7,6 @@ class User < ApplicationRecord
 	       jwt_revocation_strategy: JwtDenylist
 
   has_many :properties
-  has_many :cities
-  has_many :countries, through: :cities
+  has_many :countries, foreign_key: :user_id
+  has_many :cities, through: :countries
 end

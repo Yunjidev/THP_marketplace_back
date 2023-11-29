@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'countries/index'
+  get 'countries/show'
+  get 'countries/create'
+  get 'countries/update'
+  get 'countries/destroy'
+  resources :countries
   resources :properties
   resources :user, only: :show
   devise_for :users,
