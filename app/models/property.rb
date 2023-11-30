@@ -1,4 +1,5 @@
 class Property < ApplicationRecord
+  after_create :set_country_name, :set_city_name
   belongs_to :user
   belongs_to :city
   belongs_to :country
@@ -11,6 +12,14 @@ class Property < ApplicationRecord
   validates :furnished, inclusion: { in: [true, false] }
   attribute :superficie, :integer
 
+  def set_country_name
+    self.update!(country_name: country.name)
+  end
+
+  def set_city_name
+    self.update!(city_name: city.name)
+  end
+
   def num_rooms
     self[:num_rooms] || 0
   end
@@ -19,4 +28,5 @@ class Property < ApplicationRecord
     self[:category] = value
   end
 end
+
 

@@ -47,6 +47,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_29_123716) do
     t.integer "num_rooms"
     t.boolean "furnished"
     t.string "category"
+    t.string "country_name"
+    t.string "city_name"
     t.bigint "user_id"
     t.bigint "city_id"
     t.bigint "country_id"
