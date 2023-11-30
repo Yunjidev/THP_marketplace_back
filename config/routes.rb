@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  get 'countries/index'
-  get 'countries/show'
-  get 'countries/create'
-  get 'countries/update'
-  get 'countries/destroy'
   resources :countries
-  resources :properties
+  resources :properties 
+  get '/search', to: 'search#index'
   resources :user, only: :show
   devise_for :users,
              controllers: {
@@ -13,6 +9,8 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
   get '/member-data', to: 'members#show'
+
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

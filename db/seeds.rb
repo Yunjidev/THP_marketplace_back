@@ -16,7 +16,7 @@ european_countries = [
   'Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic',
   'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary',
   'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands',
-  'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden'
+  'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden', 'Senegal', 'Maroc', 'Brazil'
 ]
 
 european_countries.each do |country_name|
