@@ -57,6 +57,8 @@ class PropertiesController < ApplicationController
       render json: @property.errors, status: :unprocessable_entity
     end
   end
+
+  
   
   # DELETE /properties/1
   def destroy
