@@ -32,15 +32,15 @@ class PropertiesController < ApplicationController
     @property.furnished = params[:property][:furnished]
     @property.category = params[:property][:category]
     @property.num_rooms = params[:property][:num_rooms]
-  
+    
     city = City.find_or_create_by(name: params[:property][:city].downcase)
-  
+    
     # Trouver ou créer le pays
     country = Country.find_or_create_by(name: params[:property][:country])
-  
+    
     @property.city = city
     @property.country = country  # Ajoutez cette ligne même si la ville n'est pas trouvée ou créée
-  
+    
     if @property.save
       render json: @property, status: :created, location: @property, country: country.name
     else
@@ -50,15 +50,21 @@ class PropertiesController < ApplicationController
   
   
   # PATCH/PUT /properties/1
+  # PATCH/PUT /properties/1
+  # PATCH/PUT /properties/1
   def update
+    # Si la mise à jour échoue, assurez-vous de charger à nouveau la ville
+    city_name = params[:property][:city].to_s.downcase
+    city = City.find_or_create_by(name: city_name)
+    @property.city = city
+    
     if @property.update(property_params)
       render json: @property
     else
+      puts @property.errors.full_messages
       render json: @property.errors, status: :unprocessable_entity
     end
   end
-
-  
   
   # DELETE /properties/1
   def destroy
@@ -73,11 +79,12 @@ class PropertiesController < ApplicationController
   
   # Only allow a list of trusted parameters through.
   def property_params
-    params.require(:property).permit(:title, :price, :description, :user_id, :image, :country)
+    params.require(:property).permit(:title, :price, :description, :superficie, :num_rooms, :user_id, :furnished)
   end
   
+  
   def user_is_current_user
-    unless current_user == @property.user
+    unless @property.user.present? && current_user == @property.user
       render json: { error: "Accès non autorisé" }, status: :unauthorized
     end
   end
