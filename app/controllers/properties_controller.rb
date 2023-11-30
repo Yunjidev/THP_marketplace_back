@@ -42,7 +42,7 @@ class PropertiesController < ApplicationController
     @property.country = country  # Ajoutez cette ligne même si la ville n'est pas trouvée ou créée
   
     if @property.save
-      render json: @property, status: :created, location: @property
+      render json: @property, status: :created, location: @property, country: country.name
     else
       render json: @property.errors, status: :unprocessable_entity
     end
@@ -71,7 +71,7 @@ class PropertiesController < ApplicationController
   
   # Only allow a list of trusted parameters through.
   def property_params
-    params.require(:property).permit(:title, :price, :description, :user_id, :image)
+    params.require(:property).permit(:title, :price, :description, :user_id, :image, :country)
   end
   
   def user_is_current_user
